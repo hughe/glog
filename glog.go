@@ -311,7 +311,7 @@ func (m *moduleSpec) Set(value string) error {
 // isLiteral reports whether the pattern is a literal string, that is, has no metacharacters
 // that require filepath.Match to be called to match the pattern.
 func isLiteral(pattern string) bool {
-	return !strings.ContainsAny(pattern, `*?[]\`)
+	return !strings.ContainsAny(pattern, "*?[]\\")
 }
 
 // traceLocation represents the setting of the -log_backtrace_at flag.
@@ -392,7 +392,7 @@ type flushSyncWriter interface {
 }
 
 func init() {
-	flag.BoolVar(&logging.toStderr, "logtostderr", false, "log to standard error instead of files")
+	flag.BoolVar(&logging.toStderr, "logtostderr", true, "log to standard error instead of files")
 	flag.BoolVar(&logging.alsoToStderr, "alsologtostderr", false, "log to standard error as well as files")
 	flag.Var(&logging.verbosity, "v", "log level for V logs")
 	flag.Var(&logging.stderrThreshold, "stderrthreshold", "logs at or above this threshold go to stderr")
