@@ -83,3 +83,7 @@ func (c *Ctx) V(level Level) *Ctx {
 	}
 	return nil
 }
+
+func (c *Ctx) VB(level Level) bool {
+	return c.V(level) != nil
+}

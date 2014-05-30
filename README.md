@@ -5,20 +5,29 @@ A branch of [github.com/golang/glog](https://github.com/golang/glog)
 with the addition of a Context feature:
 
     ctx := glog.NewCtx("module")
-    ctx.Info("Starting my module")
+    ctx.Info("Starting ...")
+    =>
+    I0530 12:38:38.935866 25167 example.go:11] [module] Starting ...
 
 or:
 
     ctx := glog.NewCtxf("Request %d", requestNo)
-    ctx.Warn("Caught fire, abort transaction")
+    ctx.Warn("Disk on fire, aborting transaction")
+    =>
+    W0530 12:38:38.935866 25167 example.go:11] [Request 666] Disk on fire, aborting transaction ...
 
-The Ctx object also has a V() method:
+The Ctx object also has V() methods:
 
     ctx.V(2).Info("Blah!")
     
-    if ctx.V(2) != nil {
-        ctx.Info("Send in the bees")
+    if ctx.VB(2) {  // VB returns a bool
+        ctx.Info("The value of pi is", calcPi())
     }
 
+The first example works because `V(level)` method returns a valid
+`*Ctx` if the verbosity level is `>= level` or `nil` if it is less and
+the Info method can be called with a nil '*Ctx' (it does nothing).
+The second example is perfered when evaluating the arguments to Info
+is expensive.
 
 
