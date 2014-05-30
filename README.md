@@ -26,7 +26,7 @@ The `Ctx` type also has `V()` methods:
 
 The first example works because `V(level)` method returns a valid
 `*Ctx` if the verbosity level is `>= level` or `nil` if it is less and
-the Info method can be called with a `nil` receiver (it does nothing).
+the `Info` method can be called with a `nil` receiver (it does nothing).
 The second example is perfered when evaluating the arguments to Info
 is expensive.
 
