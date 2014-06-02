@@ -30,4 +30,11 @@ the `Info` method can be called with a `nil` receiver (it does nothing).
 The second example is perfered when evaluating the arguments to Info
 is expensive.
 
+Status
+======
+
+**Abandonded.** After playing with this for a few hours, I've decided
+it I don't really need all of this and have gone back to using plain
+old `log`.
+
 
