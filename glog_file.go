@@ -66,7 +66,7 @@ func init() {
 	}
 
 	// Sanitize userName since it may contain filepath separators on Windows.
-	userName = strings.Replace(userName, `\`, "_", -1)
+	userName = strings.Replace(userName, "\\", "_", -1)
 }
 
 // shortHostname returns its argument, truncating at the first period.
